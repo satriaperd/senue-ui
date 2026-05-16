@@ -25,8 +25,8 @@
       </nav>
 
       <div class="dev-sidebar__footer">
-        <button class="dev-theme-toggle" @click="isDark = !isDark">
-          <span class="material-symbols-rounded">{{ isDark ? 'light_mode' : 'dark_mode' }}</span>
+        <button class="dev-theme-toggle" @click="toggleTheme">
+          <SeneuIcon :name="isDark ? 'light_mode' : 'dark_mode'" :size="16" />
           {{ isDark ? 'Light' : 'Dark' }}
         </button>
       </div>
@@ -46,88 +46,209 @@
       </div>
 
       <div class="dev-main__content">
-        <!-- Placeholder saat komponen belum ada -->
-        <component
-          v-if="activeItem?.ready && activeItem?.showcase"
-          :is="activeItem.showcase"
-        />
-        <div v-else class="dev-empty">
-          <span class="material-symbols-rounded dev-empty__icon">construction</span>
-          <p class="dev-empty__title">Komponen belum dibuat</p>
-          <p class="dev-empty__desc">{{ activeItem?.name ?? 'Pilih komponen dari sidebar' }} akan muncul di sini setelah selesai dikerjain.</p>
-        </div>
-      </div>
 
-      <!-- Token Preview -->
-      <div v-if="activeComponent === '__tokens__'" class="dev-main__content">
-        <div class="dev-token-section">
-          <h2 class="dev-token-section__title">Brand Colors</h2>
-          <div class="dev-color-grid">
-            <div v-for="shade in [50,100,200,300,400,500,600,700,800,900]" :key="shade" class="dev-color-swatch">
-              <div class="dev-color-swatch__block" :style="{ background: `var(--primitive-color-orange-${shade})` }" />
-              <span class="dev-color-swatch__label">orange-{{ shade }}</span>
+        <!-- Token Preview -->
+        <template v-if="activeComponent === '__tokens__'">
+          <div class="dev-token-section">
+            <h2 class="dev-token-section__title">Brand Colors</h2>
+            <div class="dev-color-grid">
+              <div v-for="shade in [50,100,200,300,400,500,600,700,800,900]" :key="shade" class="dev-color-swatch">
+                <div class="dev-color-swatch__block" :style="{ background: `var(--primitive-color-orange-${shade})` }" />
+                <span class="dev-color-swatch__label">orange-{{ shade }}</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="dev-token-section">
-          <h2 class="dev-token-section__title">Neutral / Warm Gray</h2>
-          <div class="dev-color-grid">
-            <div v-for="shade in [0,50,100,200,300,400,500,600,700,800,900,950]" :key="shade" class="dev-color-swatch">
-              <div class="dev-color-swatch__block" :style="{ background: `var(--primitive-color-neutral-${shade})`, border: shade === 0 ? '1px solid var(--color-border-default)' : 'none' }" />
-              <span class="dev-color-swatch__label">neutral-{{ shade }}</span>
+          <div class="dev-token-section">
+            <h2 class="dev-token-section__title">Neutral / Warm Gray</h2>
+            <div class="dev-color-grid">
+              <div v-for="shade in [0,50,100,200,300,400,500,600,700,800,900,950]" :key="shade" class="dev-color-swatch">
+                <div class="dev-color-swatch__block" :style="{ background: `var(--primitive-color-neutral-${shade})`, border: shade === 0 ? '1px solid var(--color-border-default)' : 'none' }" />
+                <span class="dev-color-swatch__label">neutral-{{ shade }}</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="dev-token-section">
-          <h2 class="dev-token-section__title">Semantic Surfaces</h2>
-          <div class="dev-color-grid">
-            <div v-for="name in ['default','raised','brand','brand-subtle','danger','danger-subtle','warning','warning-subtle','success','success-subtle','info','info-subtle']" :key="name" class="dev-color-swatch">
-              <div class="dev-color-swatch__block" :style="{ background: `var(--color-surface-${name})`, border: 'none', outline: '1px solid var(--color-border-default)' }" />
-              <span class="dev-color-swatch__label">{{ name }}</span>
+          <div class="dev-token-section">
+            <h2 class="dev-token-section__title">Semantic Surfaces</h2>
+            <div class="dev-color-grid">
+              <div v-for="name in ['default','raised','brand','brand-subtle','danger','danger-subtle','warning','warning-subtle','success','success-subtle','info','info-subtle']" :key="name" class="dev-color-swatch">
+                <div class="dev-color-swatch__block" :style="{ background: `var(--color-surface-${name})`, outline: '1px solid var(--color-border-default)' }" />
+                <span class="dev-color-swatch__label">{{ name }}</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="dev-token-section">
-          <h2 class="dev-token-section__title">Chart Colors</h2>
-          <div class="dev-color-grid">
-            <div v-for="n in [1,2,3,4]" :key="n" class="dev-color-swatch">
-              <div class="dev-color-swatch__block" :style="{ background: `var(--color-chart-${n})` }" />
-              <span class="dev-color-swatch__label">chart-{{ n }}</span>
+          <div class="dev-token-section">
+            <h2 class="dev-token-section__title">Chart Colors</h2>
+            <div class="dev-color-grid">
+              <div v-for="n in [1,2,3,4]" :key="n" class="dev-color-swatch">
+                <div class="dev-color-swatch__block" :style="{ background: `var(--color-chart-${n})` }" />
+                <span class="dev-color-swatch__label">chart-{{ n }}</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="dev-token-section">
-          <h2 class="dev-token-section__title">Elevation</h2>
-          <div class="dev-elevation-grid">
-            <div v-for="level in ['surface','raised','floating','overlay','sticky']" :key="level" class="dev-elevation-card" :style="{ boxShadow: `var(--elevation-${level})` }">
-              <span>{{ level }}</span>
+          <div class="dev-token-section">
+            <h2 class="dev-token-section__title">Elevation</h2>
+            <div class="dev-elevation-grid">
+              <div v-for="level in ['surface','raised','floating','overlay','sticky']" :key="level" class="dev-elevation-card" :style="{ boxShadow: `var(--elevation-${level})` }">
+                <span>{{ level }}</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="dev-token-section">
-          <h2 class="dev-token-section__title">Border Radius</h2>
-          <div class="dev-radius-grid">
-            <div v-for="name in ['subtle','element','container','overlay','pill']" :key="name" class="dev-radius-card">
-              <div class="dev-radius-card__box" :style="{ borderRadius: `var(--radius-${name})` }" />
-              <span>{{ name }}</span>
+          <div class="dev-token-section">
+            <h2 class="dev-token-section__title">Border Radius</h2>
+            <div class="dev-radius-grid">
+              <div v-for="name in ['subtle','element','container','overlay','pill']" :key="name" class="dev-radius-card">
+                <div class="dev-radius-card__box" :style="{ borderRadius: `var(--radius-${name})` }" />
+                <span>{{ name }}</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="dev-token-section">
-          <h2 class="dev-token-section__title">Typography Scale</h2>
-          <div class="dev-type-stack">
-            <div v-for="size in ['xs','small','body','lead','heading-4','heading-3','heading-2','heading-1']" :key="size" class="dev-type-row">
-              <span class="dev-type-row__label">{{ size }}</span>
-              <span :style="{ fontSize: `var(--font-size-${size})`, lineHeight: '1.2' }">Seneu UI</span>
+          <div class="dev-token-section">
+            <h2 class="dev-token-section__title">Typography Scale</h2>
+            <div class="dev-type-stack">
+              <div v-for="size in ['xs','small','body','lead','heading-4','heading-3','heading-2','heading-1']" :key="size" class="dev-type-row">
+                <span class="dev-type-row__label">{{ size }}</span>
+                <span :style="{ fontSize: `var(--font-size-${size})`, lineHeight: '1.2' }">Seneu UI</span>
+              </div>
             </div>
           </div>
-        </div>
+        </template>
+
+        <!-- Icon Showcase -->
+        <template v-else-if="activeComponent === '__icon__'">
+          <div class="dev-token-section">
+            <h2 class="dev-token-section__title">Props</h2>
+            <div class="dev-icon-prop-grid">
+              <div class="dev-icon-prop-row">
+                <span class="dev-icon-prop-row__label">size</span>
+                <div class="dev-icon-row">
+                  <div v-for="s in [12,16,20,24,32,48]" :key="s" class="dev-icon-cell">
+                    <SeneuIcon name="star" :size="s" />
+                    <span class="dev-icon-cell__label">{{ s }}px</span>
+                  </div>
+                </div>
+              </div>
+              <div class="dev-icon-prop-row">
+                <span class="dev-icon-prop-row__label">fill</span>
+                <div class="dev-icon-row">
+                  <div class="dev-icon-cell">
+                    <SeneuIcon name="favorite" :fill="false" :size="24" />
+                    <span class="dev-icon-cell__label">false</span>
+                  </div>
+                  <div class="dev-icon-cell">
+                    <SeneuIcon name="favorite" :fill="true" :size="24" />
+                    <span class="dev-icon-cell__label">true</span>
+                  </div>
+                </div>
+              </div>
+              <div class="dev-icon-prop-row">
+                <span class="dev-icon-prop-row__label">weight</span>
+                <div class="dev-icon-row">
+                  <div v-for="w in [100,200,300,400,500,600,700]" :key="w" class="dev-icon-cell">
+                    <SeneuIcon name="settings" :weight="w" :size="24" />
+                    <span class="dev-icon-cell__label">{{ w }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dev-token-section">
+            <h2 class="dev-token-section__title">Common Icons</h2>
+            <div class="dev-icon-grid">
+              <div v-for="icon in COMMON_ICONS" :key="icon" class="dev-icon-tile">
+                <SeneuIcon :name="icon" :size="24" />
+                <span class="dev-icon-tile__label">{{ icon }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dev-token-section">
+            <h2 class="dev-token-section__title">Accessibility</h2>
+            <div class="dev-icon-row" style="gap: var(--space-6);">
+              <div>
+                <p class="dev-showcase-caption">Decorative (aria-hidden)</p>
+                <div style="display:flex;align-items:center;gap:var(--space-2);margin-top:var(--space-2);">
+                  <SeneuIcon name="info" :size="20" />
+                  <span style="font-size:var(--font-size-body);">No label prop — screen reader ignores it</span>
+                </div>
+              </div>
+              <div>
+                <p class="dev-showcase-caption">Meaningful (role="img")</p>
+                <div style="display:flex;align-items:center;gap:var(--space-2);margin-top:var(--space-2);">
+                  <SeneuIcon name="warning" :size="20" label="Warning" />
+                  <span style="font-size:var(--font-size-body);">label="Warning" → screen reader announces it</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </template>
+
+        <!-- useTheme Showcase -->
+        <template v-else-if="activeComponent === '__theme__'">
+          <div class="dev-token-section">
+            <h2 class="dev-token-section__title">Current State</h2>
+            <div class="dev-theme-state">
+              <div class="dev-theme-state__indicator" :class="isDark ? 'dev-theme-state__indicator--dark' : 'dev-theme-state__indicator--light'">
+                <SeneuIcon :name="isDark ? 'dark_mode' : 'light_mode'" :size="32" />
+                <span>{{ isDark ? 'Dark mode' : 'Light mode' }}</span>
+              </div>
+              <code class="dev-theme-state__code">isDark = {{ isDark }}</code>
+            </div>
+          </div>
+
+          <div class="dev-token-section">
+            <h2 class="dev-token-section__title">API</h2>
+            <div class="dev-theme-api">
+              <div class="dev-theme-api__row">
+                <button class="dev-btn-showcase" @click="toggleTheme">toggle()</button>
+                <span class="dev-showcase-caption">flip antara light ↔ dark, simpan ke localStorage</span>
+              </div>
+              <div class="dev-theme-api__row">
+                <button class="dev-btn-showcase" @click="setTheme('light')">setTheme('light')</button>
+                <span class="dev-showcase-caption">paksa light mode</span>
+              </div>
+              <div class="dev-theme-api__row">
+                <button class="dev-btn-showcase" @click="setTheme('dark')">setTheme('dark')</button>
+                <span class="dev-showcase-caption">paksa dark mode</span>
+              </div>
+              <div class="dev-theme-api__row">
+                <button class="dev-btn-showcase" @click="setTheme('system')">setTheme('system')</button>
+                <span class="dev-showcase-caption">ikuti OS preference, hapus override</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dev-token-section">
+            <h2 class="dev-token-section__title">Singleton Behaviour</h2>
+            <p style="font-size:var(--font-size-body);color:var(--color-text-muted);line-height:var(--line-height-normal);">
+              Semua komponen yang memanggil <code style="font-family:var(--font-mono);font-size:var(--font-size-small);">useTheme()</code>
+              berbagi <code style="font-family:var(--font-mono);font-size:var(--font-size-small);">isDark</code> yang sama —
+              satu perubahan langsung reflect ke seluruh app.
+              Theme toggle di sidebar kiri menggunakan composable yang sama.
+            </p>
+          </div>
+        </template>
+
+        <!-- Generic component showcase (future components) -->
+        <template v-else-if="activeItem?.ready && activeItem?.showcase">
+          <component :is="activeItem.showcase" />
+        </template>
+
+        <!-- WIP / not built yet -->
+        <template v-else>
+          <div class="dev-empty">
+            <SeneuIcon name="construction" :size="48" style="color:var(--color-border-muted);" />
+            <p class="dev-empty__title">Komponen belum dibuat</p>
+            <p class="dev-empty__desc">{{ activeItem?.name ?? 'Pilih komponen dari sidebar' }} akan muncul di sini setelah selesai dikerjain.</p>
+          </div>
+        </template>
+
       </div>
     </main>
   </div>
@@ -135,16 +256,31 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useTheme } from './composables/useTheme.js'
+import SeneuIcon from './components/display/SeneuIcon.vue'
 
 const version = '1.0.0'
-const isDark = ref(false)
+const { isDark, toggle: toggleTheme, setTheme } = useTheme()
 const activeComponent = ref('__tokens__')
+
+const COMMON_ICONS = [
+  'home', 'dashboard', 'settings', 'person', 'group', 'search',
+  'add', 'edit', 'delete', 'close', 'check', 'arrow_back',
+  'arrow_forward', 'chevron_right', 'expand_more', 'menu',
+  'notifications', 'mail', 'calendar_today', 'schedule',
+  'folder', 'file_copy', 'upload', 'download', 'link',
+  'visibility', 'visibility_off', 'lock', 'lock_open',
+  'info', 'warning', 'error', 'check_circle', 'help',
+  'star', 'favorite', 'bookmark', 'share', 'more_vert',
+]
 
 const componentCategories = [
   {
-    label: 'Design Tokens',
+    label: 'Foundation',
     items: [
-      { id: '__tokens__', name: 'Token Preview', category: 'Design System', ready: true, showcase: null },
+      { id: '__tokens__', name: 'Token Preview', category: 'Foundation', ready: true, showcase: null },
+      { id: '__icon__',   name: 'SeneuIcon',     category: 'Foundation', ready: true, showcase: null },
+      { id: '__theme__',  name: 'useTheme',      category: 'Foundation', ready: true, showcase: null },
     ],
   },
   {
@@ -361,10 +497,6 @@ body {
   border-color: var(--color-border-interactive);
 }
 
-.dev-theme-toggle .material-symbols-rounded {
-  font-size: 16px;
-}
-
 /* ── Main ────────────────────────────────────────── */
 .dev-main {
   flex: 1;
@@ -434,11 +566,6 @@ body {
   min-height: 320px;
   color: var(--color-text-muted);
   text-align: center;
-}
-
-.dev-empty__icon {
-  font-size: 48px;
-  color: var(--color-border-muted);
 }
 
 .dev-empty__title {
@@ -557,5 +684,150 @@ body {
   font-family: var(--font-mono);
   width: 80px;
   flex-shrink: 0;
+}
+
+/* ── Icon showcase ───────────────────────────────── */
+.dev-icon-prop-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.dev-icon-prop-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.dev-icon-prop-row__label {
+  font-size: var(--font-size-xs);
+  font-family: var(--font-mono);
+  color: var(--color-text-muted);
+  width: 56px;
+  flex-shrink: 0;
+}
+
+.dev-icon-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.dev-icon-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.dev-icon-cell__label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+}
+
+.dev-icon-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.dev-icon-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-3);
+  border-radius: var(--radius-element);
+  border: 1px solid var(--color-border-default);
+  background: var(--color-surface-raised);
+  min-width: 72px;
+  transition: border-color var(--duration-fast) var(--easing-standard);
+}
+
+.dev-icon-tile:hover {
+  border-color: var(--color-border-interactive);
+}
+
+.dev-icon-tile__label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  text-align: center;
+  word-break: break-all;
+}
+
+/* ── useTheme showcase ───────────────────────────── */
+.dev-theme-state {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.dev-theme-state__indicator {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--radius-container);
+  font-size: var(--font-size-lead);
+  font-weight: var(--font-weight-medium);
+  border: 1px solid var(--color-border-default);
+}
+
+.dev-theme-state__indicator--light {
+  background: var(--color-surface-warning-subtle);
+  color: var(--color-text-warning);
+}
+
+.dev-theme-state__indicator--dark {
+  background: var(--color-surface-info-subtle);
+  color: var(--color-text-info);
+}
+
+.dev-theme-state__code {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-body);
+  color: var(--color-text-muted);
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-surface-raised);
+  border-radius: var(--radius-element);
+  border: 1px solid var(--color-border-default);
+}
+
+.dev-theme-api {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.dev-theme-api__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.dev-btn-showcase {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-small);
+  color: var(--color-text-brand);
+  background: var(--color-surface-brand-subtle);
+  border: 1px solid var(--color-border-brand);
+  border-radius: var(--radius-element);
+  padding: var(--space-2) var(--space-4);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--easing-standard);
+  white-space: nowrap;
+}
+
+.dev-btn-showcase:hover {
+  background: var(--color-surface-brand);
+  color: var(--color-text-on-brand);
+}
+
+.dev-showcase-caption {
+  font-size: var(--font-size-small);
+  color: var(--color-text-muted);
 }
 </style>

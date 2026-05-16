@@ -4,6 +4,7 @@
 
 @import './tokens/primitive.css';
 @import './tokens/semantic.css';
+@import './tokens/base.css';
 
 @import 'tailwindcss';
 

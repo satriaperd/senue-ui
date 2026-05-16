@@ -13,7 +13,8 @@
     "./dist/tokens.css": "./dist/tokens.css",
     "./dist/style.css": "./dist/style.css",
     "./src/tokens/primitive.css": "./src/tokens/primitive.css",
-    "./src/tokens/semantic.css": "./src/tokens/semantic.css"
+    "./src/tokens/semantic.css": "./src/tokens/semantic.css",
+    "./src/tokens/base.css": "./src/tokens/base.css"
   },
   "files": [
     "dist",
