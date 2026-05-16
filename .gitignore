@@ -1,4 +1,34 @@
+# Dependencies
 node_modules/
+
+# Build output
 dist/
+
+# Claude Code memory & session files
+.claude/
+
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+
+# Vite local env files
 *.local
+.env
+.env.*
+!.env.example
+
+# Editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Test coverage
+coverage/
