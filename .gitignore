@@ -6,6 +6,7 @@ dist/
 
 # Claude Code memory & session files
 .claude/
+CLAUDE.md
 
 # macOS
 .DS_Store
