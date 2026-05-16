@@ -2,7 +2,12 @@
   "permissions": {
     "allow": [
       "Bash(npm install *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(find /Users/satriaperdana/Desktop/Coding/Website/cimora-cms/src -type f | sort && echo \"---\" && cat /Users/satriaperdana/Desktop/Coding/Website/cimora-cms/vite.config.js)",
+      "Read(//Users/satriaperdana/Desktop/Coding/Website/cimora-cms/**)"
+    ],
+    "additionalDirectories": [
+      "/Users/satriaperdana/Desktop/Coding/Website/cimora-cms"
     ]
   }
 }
