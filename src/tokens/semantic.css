@@ -1,0 +1,228 @@
+/* ============================================================
+   SEMANTIC TOKENS
+   Mengacu ke primitive token. INI yang dipakai di komponen.
+   Penamaan berbasis konteks — bukan berdasarkan nilai.
+   ============================================================ */
+
+/* ============================================================
+   LIGHT THEME (default)
+   ============================================================ */
+:root {
+  /* --------------------------------------------------
+     TYPOGRAPHY — semantic aliases
+     -------------------------------------------------- */
+  --font-sans: var(--primitive-font-inter);
+  --font-mono: var(--primitive-font-jetbrains-mono);
+
+  --font-size-xs:        var(--primitive-font-size-10);
+  --font-size-small:     var(--primitive-font-size-13);
+  --font-size-body:      var(--primitive-font-size-16);
+  --font-size-lead:      var(--primitive-font-size-20);
+  --font-size-heading-4: var(--primitive-font-size-25);
+  --font-size-heading-3: var(--primitive-font-size-31);
+  --font-size-heading-2: var(--primitive-font-size-39);
+  --font-size-heading-1: var(--primitive-font-size-49);
+  --font-size-display:   var(--primitive-font-size-61);
+
+  --font-weight-regular:  var(--primitive-font-weight-400);
+  --font-weight-medium:   var(--primitive-font-weight-500);
+  --font-weight-semibold: var(--primitive-font-weight-600);
+  --font-weight-bold:     var(--primitive-font-weight-700);
+
+  --line-height-tight:   var(--primitive-line-height-125);
+  --line-height-normal:  var(--primitive-line-height-150);
+  --line-height-relaxed: var(--primitive-line-height-175);
+
+  --letter-spacing-tight:  var(--primitive-letter-spacing-tight);
+  --letter-spacing-normal: var(--primitive-letter-spacing-normal);
+  --letter-spacing-wide:   var(--primitive-letter-spacing-wide);
+
+  /* --------------------------------------------------
+     SPACING — semantic
+     -------------------------------------------------- */
+  --space-component-gap:            var(--primitive-space-3);
+  --space-component-padding-inline: var(--primitive-space-4);
+  --space-component-padding-block:  var(--primitive-space-2);
+  --space-layout-section:           var(--primitive-space-12);
+  --space-layout-content:           var(--primitive-space-8);
+  --space-inline-tight:             var(--primitive-space-2);
+  --space-inline-normal:            var(--primitive-space-4);
+  --space-inline-loose:             var(--primitive-space-8);
+  --space-stack-tight:              var(--primitive-space-2);
+  --space-stack-normal:             var(--primitive-space-4);
+  --space-stack-loose:              var(--primitive-space-8);
+
+  /* --------------------------------------------------
+     BORDER RADIUS — semantic, kontekstual
+     -------------------------------------------------- */
+  --radius-none:      var(--primitive-radius-0);
+  --radius-subtle:    var(--primitive-radius-4);
+  --radius-element:   var(--primitive-radius-8);
+  --radius-container: var(--primitive-radius-12);
+  --radius-overlay:   var(--primitive-radius-16);
+  --radius-pill:      var(--primitive-radius-9999);
+  --radius-circle:    var(--primitive-radius-50);
+
+  /* --------------------------------------------------
+     ELEVATION / SHADOW — warm tint
+     -------------------------------------------------- */
+  --elevation-none:     none;
+  --elevation-surface:  0 1px 2px var(--primitive-shadow-warm-tint);
+  --elevation-raised:   0 2px 8px var(--primitive-shadow-warm-tint), 0 1px 3px var(--primitive-shadow-warm-tint);
+  --elevation-floating: 0 4px 16px var(--primitive-shadow-warm-mid), 0 2px 6px var(--primitive-shadow-warm-tint);
+  --elevation-overlay:  0 8px 32px var(--primitive-shadow-warm-deep), 0 4px 12px var(--primitive-shadow-warm-mid);
+  --elevation-sticky:   0 2px 8px var(--primitive-shadow-warm-mid);
+
+  /* --------------------------------------------------
+     Z-INDEX
+     -------------------------------------------------- */
+  --z-index-base:             0;
+  --z-index-raised:           10;
+  --z-index-dropdown:         100;
+  --z-index-sticky:           200;
+  --z-index-overlay-backdrop: 300;
+  --z-index-overlay:          400;
+  --z-index-toast:            500;
+  --z-index-tooltip:          600;
+
+  /* --------------------------------------------------
+     OPACITY
+     -------------------------------------------------- */
+  --opacity-0:        var(--primitive-opacity-0);
+  --opacity-disabled: var(--primitive-opacity-38);
+  --opacity-medium:   var(--primitive-opacity-60);
+  --opacity-high:     var(--primitive-opacity-87);
+  --opacity-full:     var(--primitive-opacity-100);
+
+  /* --------------------------------------------------
+     TRANSITION & ANIMATION
+     -------------------------------------------------- */
+  --duration-instant: var(--primitive-duration-0);
+  --duration-fast:    var(--primitive-duration-100);
+  --duration-normal:  var(--primitive-duration-200);
+  --duration-slow:    var(--primitive-duration-300);
+  --duration-slower:  var(--primitive-duration-400);
+
+  --easing-standard: var(--primitive-easing-standard);
+  --easing-enter:    var(--primitive-easing-enter);
+  --easing-exit:     var(--primitive-easing-exit);
+  --easing-spring:   var(--primitive-easing-spring);
+
+  /* --------------------------------------------------
+     CHART COLORS
+     -------------------------------------------------- */
+  --color-chart-1: var(--primitive-color-chart-1);
+  --color-chart-2: var(--primitive-color-chart-2);
+  --color-chart-3: var(--primitive-color-chart-3);
+  --color-chart-4: var(--primitive-color-chart-4);
+
+  /* --------------------------------------------------
+     COLOR — SURFACE (light theme)
+     -------------------------------------------------- */
+  --color-surface-default:        var(--primitive-color-neutral-50);
+  --color-surface-raised:         var(--primitive-color-neutral-0);
+  --color-surface-overlay:        var(--primitive-color-neutral-0);
+  --color-surface-brand:          var(--primitive-color-orange-500);
+  --color-surface-brand-subtle:   var(--primitive-color-orange-50);
+  --color-surface-danger:         var(--primitive-color-red-500);
+  --color-surface-danger-subtle:  var(--primitive-color-red-50);
+  --color-surface-warning:        var(--primitive-color-amber-500);
+  --color-surface-warning-subtle: var(--primitive-color-amber-50);
+  --color-surface-success:        var(--primitive-color-green-500);
+  --color-surface-success-subtle: var(--primitive-color-green-50);
+  --color-surface-info:           var(--primitive-color-blue-500);
+  --color-surface-info-subtle:    var(--primitive-color-blue-50);
+
+  /* --------------------------------------------------
+     COLOR — TEXT (light theme)
+     -------------------------------------------------- */
+  --color-text-default:    var(--primitive-color-neutral-900);
+  --color-text-muted:      var(--primitive-color-neutral-500);
+  --color-text-disabled:   var(--primitive-color-neutral-400);
+  --color-text-on-brand:   var(--primitive-color-neutral-0);
+  --color-text-on-danger:  var(--primitive-color-neutral-0);
+  --color-text-on-success: var(--primitive-color-neutral-0);
+  --color-text-brand:      var(--primitive-color-orange-600);
+  --color-text-danger:     var(--primitive-color-red-600);
+  --color-text-warning:    var(--primitive-color-amber-700);
+  --color-text-success:    var(--primitive-color-green-700);
+  --color-text-info:       var(--primitive-color-blue-700);
+
+  /* --------------------------------------------------
+     COLOR — BORDER (light theme)
+     -------------------------------------------------- */
+  --color-border-default:     var(--primitive-color-neutral-200);
+  --color-border-interactive: var(--primitive-color-orange-500);
+  --color-border-focus:       var(--primitive-color-orange-500);
+  --color-border-brand:       var(--primitive-color-orange-500);
+  --color-border-danger:      var(--primitive-color-red-500);
+  --color-border-success:     var(--primitive-color-green-500);
+  --color-border-muted:       var(--primitive-color-neutral-300);
+}
+
+/* ============================================================
+   DARK THEME — via .dark class on root element
+   ============================================================ */
+.dark {
+  /* --------------------------------------------------
+     COLOR — SURFACE (dark theme)
+     -------------------------------------------------- */
+  --color-surface-default:        var(--primitive-color-neutral-900);
+  --color-surface-raised:         var(--primitive-color-neutral-800);
+  --color-surface-overlay:        var(--primitive-color-neutral-800);
+  --color-surface-brand:          var(--primitive-color-orange-500);
+  --color-surface-brand-subtle:   var(--primitive-color-orange-900);
+  --color-surface-danger:         var(--primitive-color-red-500);
+  --color-surface-danger-subtle:  var(--primitive-color-red-900);
+  --color-surface-warning:        var(--primitive-color-amber-500);
+  --color-surface-warning-subtle: var(--primitive-color-amber-900);
+  --color-surface-success:        var(--primitive-color-green-500);
+  --color-surface-success-subtle: var(--primitive-color-green-900);
+  --color-surface-info:           var(--primitive-color-blue-500);
+  --color-surface-info-subtle:    var(--primitive-color-blue-900);
+
+  /* --------------------------------------------------
+     COLOR — TEXT (dark theme)
+     -------------------------------------------------- */
+  --color-text-default:    var(--primitive-color-neutral-50);
+  --color-text-muted:      var(--primitive-color-neutral-400);
+  --color-text-disabled:   var(--primitive-color-neutral-600);
+  --color-text-on-brand:   var(--primitive-color-neutral-0);
+  --color-text-on-danger:  var(--primitive-color-neutral-0);
+  --color-text-on-success: var(--primitive-color-neutral-0);
+  --color-text-brand:      var(--primitive-color-orange-400);
+  --color-text-danger:     var(--primitive-color-red-400);
+  --color-text-warning:    var(--primitive-color-amber-400);
+  --color-text-success:    var(--primitive-color-green-400);
+  --color-text-info:       var(--primitive-color-blue-400);
+
+  /* --------------------------------------------------
+     COLOR — BORDER (dark theme)
+     -------------------------------------------------- */
+  --color-border-default:     var(--primitive-color-neutral-700);
+  --color-border-interactive: var(--primitive-color-orange-400);
+  --color-border-focus:       var(--primitive-color-orange-400);
+  --color-border-brand:       var(--primitive-color-orange-400);
+  --color-border-danger:      var(--primitive-color-red-400);
+  --color-border-success:     var(--primitive-color-green-400);
+  --color-border-muted:       var(--primitive-color-neutral-600);
+
+  /* --------------------------------------------------
+     ELEVATION / SHADOW — dark theme
+     -------------------------------------------------- */
+  --elevation-surface:  0 1px 2px rgba(0, 0, 0, 0.3);
+  --elevation-raised:   0 2px 8px rgba(0, 0, 0, 0.4);
+  --elevation-floating: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --elevation-overlay:  0 8px 32px rgba(0, 0, 0, 0.6);
+  --elevation-sticky:   0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================================
+   REDUCED MOTION — respek prefers-reduced-motion
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

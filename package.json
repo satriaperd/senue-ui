@@ -1,0 +1,59 @@
+{
+  "name": "seneu-ui",
+  "version": "1.0.0",
+  "description": "Vue 3 component library for CMS and admin panel — by Cimang Club",
+  "type": "module",
+  "main": "./dist/seneu-ui.umd.cjs",
+  "module": "./dist/seneu-ui.js",
+  "exports": {
+    ".": {
+      "import": "./dist/seneu-ui.js",
+      "require": "./dist/seneu-ui.umd.cjs"
+    },
+    "./dist/tokens.css": "./dist/tokens.css",
+    "./dist/style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "type-check": "vue-tsc --noEmit"
+  },
+  "peerDependencies": {
+    "echarts": "^5.0.0",
+    "vue": "^3.5.0"
+  },
+  "peerDependenciesMeta": {
+    "echarts": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.5",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "tailwindcss": "^4.1.5",
+    "typescript": "^5.7.2",
+    "vite": "^6.3.2",
+    "vite-plugin-dts": "^5.0.0",
+    "vue": "^3.5.13",
+    "vue-tsc": "^2.2.8"
+  },
+  "keywords": [
+    "vue",
+    "vue3",
+    "component-library",
+    "ui",
+    "cms",
+    "admin-panel",
+    "tailwindcss"
+  ],
+  "author": "Cimang Club",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/satriaperd/seneu-cms"
+  }
+}

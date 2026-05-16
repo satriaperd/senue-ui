@@ -1,0 +1,203 @@
+/* ============================================================
+   PRIMITIVE TOKENS
+   Nilai mentah — JANGAN dipakai langsung di komponen.
+   Semua referensi dari sini harus melalui semantic.css
+   ============================================================ */
+
+:root {
+  /* --------------------------------------------------
+     COLOR — Brand (orange-based, #FC7A1E as 500)
+     -------------------------------------------------- */
+  --primitive-color-orange-50:  #FFF7F0;
+  --primitive-color-orange-100: #FFE8D0;
+  --primitive-color-orange-200: #FFCFA0;
+  --primitive-color-orange-300: #FFB06B;
+  --primitive-color-orange-400: #FD9241;
+  --primitive-color-orange-500: #FC7A1E;
+  --primitive-color-orange-600: #E0620D;
+  --primitive-color-orange-700: #B84D08;
+  --primitive-color-orange-800: #8F3B08;
+  --primitive-color-orange-900: #6B2C08;
+
+  /* --------------------------------------------------
+     COLOR — Neutral / Warm Gray (sedikit orange undertone)
+     -------------------------------------------------- */
+  --primitive-color-neutral-0:   #FFFFFF;
+  --primitive-color-neutral-50:  #FAF8F6;
+  --primitive-color-neutral-100: #F3EFE9;
+  --primitive-color-neutral-200: #E5DDD4;
+  --primitive-color-neutral-300: #CBBFB3;
+  --primitive-color-neutral-400: #A89080;
+  --primitive-color-neutral-500: #877060;
+  --primitive-color-neutral-600: #6B5548;
+  --primitive-color-neutral-700: #523F35;
+  --primitive-color-neutral-800: #362820;
+  --primitive-color-neutral-900: #211610;
+  --primitive-color-neutral-950: #100A06;
+
+  /* --------------------------------------------------
+     COLOR — Danger / Error (warm red)
+     -------------------------------------------------- */
+  --primitive-color-red-50:  #FFF5F5;
+  --primitive-color-red-100: #FFE0E0;
+  --primitive-color-red-200: #FFC0C0;
+  --primitive-color-red-300: #FF9090;
+  --primitive-color-red-400: #F96060;
+  --primitive-color-red-500: #E53E3E;
+  --primitive-color-red-600: #C53030;
+  --primitive-color-red-700: #9B2424;
+  --primitive-color-red-800: #731A1A;
+  --primitive-color-red-900: #4F1111;
+
+  /* --------------------------------------------------
+     COLOR — Warning (amber warm)
+     -------------------------------------------------- */
+  --primitive-color-amber-50:  #FFFBEB;
+  --primitive-color-amber-100: #FEF3C7;
+  --primitive-color-amber-200: #FDE68A;
+  --primitive-color-amber-300: #FCD34D;
+  --primitive-color-amber-400: #FBBF24;
+  --primitive-color-amber-500: #D97706;
+  --primitive-color-amber-600: #B45309;
+  --primitive-color-amber-700: #92400E;
+  --primitive-color-amber-800: #78350F;
+  --primitive-color-amber-900: #5C260B;
+
+  /* --------------------------------------------------
+     COLOR — Success (slightly warm green)
+     -------------------------------------------------- */
+  --primitive-color-green-50:  #F0FDF4;
+  --primitive-color-green-100: #DCFCE7;
+  --primitive-color-green-200: #BBF7D0;
+  --primitive-color-green-300: #86EFAC;
+  --primitive-color-green-400: #4ADE80;
+  --primitive-color-green-500: #22C55E;
+  --primitive-color-green-600: #16A34A;
+  --primitive-color-green-700: #15803D;
+  --primitive-color-green-800: #166534;
+  --primitive-color-green-900: #14532D;
+
+  /* --------------------------------------------------
+     COLOR — Info (mid-tone blue, not too cold)
+     -------------------------------------------------- */
+  --primitive-color-blue-50:  #EFF6FF;
+  --primitive-color-blue-100: #DBEAFE;
+  --primitive-color-blue-200: #BFDBFE;
+  --primitive-color-blue-300: #93C5FD;
+  --primitive-color-blue-400: #60A5FA;
+  --primitive-color-blue-500: #3B82F6;
+  --primitive-color-blue-600: #2563EB;
+  --primitive-color-blue-700: #1D4ED8;
+  --primitive-color-blue-800: #1E40AF;
+  --primitive-color-blue-900: #1E3A8A;
+
+  /* --------------------------------------------------
+     COLOR — Chart (4 warna harmoni brand, WCAG AA)
+     -------------------------------------------------- */
+  --primitive-color-chart-1: #0D9488; /* Teal warm */
+  --primitive-color-chart-2: #6366F1; /* Indigo warm */
+  --primitive-color-chart-3: #F43F5E; /* Rose warm */
+  --primitive-color-chart-4: #84CC16; /* Lime warm */
+
+  /* --------------------------------------------------
+     SPACING — base 4px (0.25rem)
+     -------------------------------------------------- */
+  --primitive-space-1:  0.25rem;
+  --primitive-space-2:  0.5rem;
+  --primitive-space-3:  0.75rem;
+  --primitive-space-4:  1rem;
+  --primitive-space-5:  1.25rem;
+  --primitive-space-6:  1.5rem;
+  --primitive-space-8:  2rem;
+  --primitive-space-10: 2.5rem;
+  --primitive-space-12: 3rem;
+  --primitive-space-16: 4rem;
+  --primitive-space-20: 5rem;
+  --primitive-space-24: 6rem;
+  --primitive-space-32: 8rem;
+  --primitive-space-40: 10rem;
+  --primitive-space-48: 12rem;
+  --primitive-space-64: 16rem;
+
+  /* --------------------------------------------------
+     BORDER RADIUS
+     -------------------------------------------------- */
+  --primitive-radius-0:    0px;
+  --primitive-radius-4:    4px;
+  --primitive-radius-8:    8px;
+  --primitive-radius-12:   12px;
+  --primitive-radius-16:   16px;
+  --primitive-radius-9999: 9999px;
+  --primitive-radius-50:   50%;
+
+  /* --------------------------------------------------
+     TYPOGRAPHY — Font Families
+     -------------------------------------------------- */
+  --primitive-font-inter:          'Inter', sans-serif;
+  --primitive-font-jetbrains-mono: 'JetBrains Mono', monospace;
+
+  /* --------------------------------------------------
+     TYPOGRAPHY — Font Sizes (scale 1.25x, base 16px)
+     -------------------------------------------------- */
+  --primitive-font-size-10: 10px;
+  --primitive-font-size-13: 13px;
+  --primitive-font-size-16: 16px;
+  --primitive-font-size-20: 20px;
+  --primitive-font-size-25: 25px;
+  --primitive-font-size-31: 31px;
+  --primitive-font-size-39: 39px;
+  --primitive-font-size-49: 49px;
+  --primitive-font-size-61: 61px;
+
+  /* --------------------------------------------------
+     TYPOGRAPHY — Font Weights
+     -------------------------------------------------- */
+  --primitive-font-weight-400: 400;
+  --primitive-font-weight-500: 500;
+  --primitive-font-weight-600: 600;
+  --primitive-font-weight-700: 700;
+
+  /* --------------------------------------------------
+     TYPOGRAPHY — Line Heights
+     -------------------------------------------------- */
+  --primitive-line-height-125:  1.25;
+  --primitive-line-height-150:  1.5;
+  --primitive-line-height-175:  1.75;
+
+  /* --------------------------------------------------
+     TYPOGRAPHY — Letter Spacing
+     -------------------------------------------------- */
+  --primitive-letter-spacing-tight:  -0.02em;
+  --primitive-letter-spacing-normal:  0em;
+  --primitive-letter-spacing-wide:    0.05em;
+
+  /* --------------------------------------------------
+     ELEVATION — Shadow base values
+     -------------------------------------------------- */
+  --primitive-shadow-warm-tint: rgba(140, 60, 10, 0.08);
+  --primitive-shadow-warm-mid:  rgba(140, 60, 10, 0.14);
+  --primitive-shadow-warm-deep: rgba(140, 60, 10, 0.22);
+
+  /* --------------------------------------------------
+     TRANSITION
+     -------------------------------------------------- */
+  --primitive-duration-0:   0ms;
+  --primitive-duration-100: 100ms;
+  --primitive-duration-200: 200ms;
+  --primitive-duration-300: 300ms;
+  --primitive-duration-400: 400ms;
+
+  --primitive-easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --primitive-easing-enter:    cubic-bezier(0, 0, 0.2, 1);
+  --primitive-easing-exit:     cubic-bezier(0.4, 0, 1, 1);
+  --primitive-easing-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* --------------------------------------------------
+     OPACITY
+     -------------------------------------------------- */
+  --primitive-opacity-0:    0;
+  --primitive-opacity-38:   0.38;
+  --primitive-opacity-60:   0.60;
+  --primitive-opacity-87:   0.87;
+  --primitive-opacity-100:  1;
+}

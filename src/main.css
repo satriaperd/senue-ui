@@ -1,0 +1,16 @@
+/* Google Fonts — harus paling atas sebelum @import lainnya */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+
+@import './tokens/primitive.css';
+@import './tokens/semantic.css';
+
+@import 'tailwindcss';
+
+* {
+  font-family: var(--font-sans);
+}
+
+code, pre, kbd, samp {
+  font-family: var(--font-mono);
+}
